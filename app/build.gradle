@@ -7,11 +7,12 @@ plugins {
 }
 
 android {
+    namespace 'com.example.android.hilt'
     compileSdk 33
 
     defaultConfig {
         applicationId "com.example.android.hilt"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 33
         versionCode 1
         versionName "1.0"
@@ -23,18 +24,26 @@ android {
         sourceCompatibility 1.8
         targetCompatibility 1.8
     }
+
     buildFeatures {
         viewBinding = true
     }
 }
 
 dependencies {
+
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.0'
 
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0"
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+
+    //Size views
+    implementation "com.intuit.sdp:sdp-android:1.0.6"
+    implementation "com.intuit.ssp:ssp-android:1.0.6"
 
     // Testing dependencies
     androidTestImplementation "junit:junit:4.13.2"
@@ -47,6 +56,11 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
+    // Chucker
+    debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
     // Hilt testing dependencies
     androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"

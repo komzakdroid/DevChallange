@@ -14,15 +14,9 @@
   ~ limitations under the License.
   -->
 <resources>
-    <string name="app_name">LoggingApp</string>
-    <string name="buttons_welcome">Please interact with the buttons, we\'ll track your clicks!</string>
-    <string name="button_1">Button 1</string>
-    <string name="button_2">Button 2</string>
-    <string name="button_3">Button 3</string>
-    <string name="see_all_logs">SEE ALL LOGS</string>
-    <string name="delete_logs">Delete Logs</string>
-
-    <string name="content_authority">com.example.android.hilt.provider</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">AI News</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="we_do_not_have_no_any_articles">Oh, Today is beautiful day , because you have no news</string>
+    <string name="this_is_edit_text">this is edit text</string>
+    <string name="type">Type for search news</string>
 </resources>

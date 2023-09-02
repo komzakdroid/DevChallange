@@ -13,23 +13,42 @@ import javax.inject.Inject
 
 @HiltViewModel
 
-class HomeViewModel @Inject constructor(private val useCase: GetNewsUseCase) : ViewModel() {
-    private val _uiState = MutableStateFlow(HomeUiState.Loading(false))
+class HomeViewModel @Inject constructor(
+    private val useCase: GetNewsUseCase
+) : ViewModel() {
+    private val _uiState = MutableStateFlow(HomeScreenUiState())
     val uiState = _uiState.asStateFlow()
 
-    init {
+    fun initData(search: String) {
         viewModelScope.launch {
-            _uiState.update { it.copy(isLoading = true) }
+            _uiState.update { it.copy(loading = true, isEmpty = false) }
 
-            when (useCase.invoke("tashkent")) {
+            when (val result = useCase.invoke(search)) {
                 is Result.Success -> {
 
+                    _uiState.update {
+                        it.copy(
+                            loading = false,
+                            data = (result.data?.articles?.filter { article ->
+                                article?.title != null && article.title != ""
+                            }) ?: emptyList(),
+                            isEmpty = result.data?.articles?.isEmpty() ?: false,
+                        )
+                    }
                 }
 
                 is Result.Error -> {
-
+                    _uiState.update {
+                        it.copy(
+                            loading = false,
+                            error = "Something went wrong!",
+                            data = null,
+                            isEmpty = false
+                        )
+                    }
                 }
             }
         }
     }
 }
+

@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("/everything")
+    @GET("/v2/everything")
     suspend fun getNews(
         @Query("q") search: String
     ): Response<ArticleDTO>
