@@ -1,4 +1,4 @@
-package com.example.android.hilt.ui
+package com.example.android.hilt.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.android.hilt.databinding.FragmentHomeBinding
+import com.example.android.hilt.ui.NewsAdapter
 import com.example.android.hilt.util.collectLA
 import dagger.hilt.android.AndroidEntryPoint
 

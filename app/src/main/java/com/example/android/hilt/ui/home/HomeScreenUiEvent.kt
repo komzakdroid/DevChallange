@@ -1,4 +1,4 @@
-package com.example.android.hilt.ui
+package com.example.android.hilt.ui.home
 
 sealed class HomeScreenUiEvent {
     data class SearchNews(val search: String) : HomeScreenUiEvent()

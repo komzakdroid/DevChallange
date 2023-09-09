@@ -1,9 +1,8 @@
-package com.example.android.hilt.ui
+package com.example.android.hilt.ui.article
 
 import com.example.android.hilt.data.model.Article
 
-// Represents different states for the Home screen
-data class HomeScreenUiState(
+data class ArticleScreenUiState(
     val loading: Boolean = false,
     val isEmpty: Boolean = false,
     val error: String? = null,
