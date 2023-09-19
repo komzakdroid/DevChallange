@@ -2,6 +2,7 @@ package com.example.android.hilt.ui
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -9,9 +10,14 @@ import com.example.android.hilt.R
 import com.example.android.hilt.data.model.Article
 import com.example.android.hilt.databinding.ArticleItemLayoutBinding
 
-class NewsAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var list = emptyList<Article?>()
+
+    private var itemClickListener: ((Article) -> Unit)? = null
+    fun setOnItemClickListener(f: (Article) -> Unit) {
+        itemClickListener = f
+    }
 
     fun submitList(data: List<Article?>?) {
         list = data ?: emptyList()
@@ -23,12 +29,14 @@ class NewsAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         @SuppressLint("SetTextI18n")
         fun bind(item: Article) {
             binding.apply {
+
                 if (item.urlToImage != null) {
                     Glide.with(binding.root).load(item.urlToImage).centerCrop()
                         .placeholder(R.drawable.bankrupt).into(imageView)
+                    progressBar.visibility = View.GONE
                 } else {
                     imageView.setImageResource(R.drawable.logo_transformed)
-                    progressBar.visibility = set.visibility
+                    progressBar.visibility = View.GONE
                 }
 
                 postedDate.text = item.publishedAt?.substring(0, 10) ?: "Unknown"
@@ -41,7 +49,10 @@ class NewsAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     val text = item.content?.substring(0, 61) ?: "Unknown"
                     description.text = "$text..."
                 }
+
+                root.setOnClickListener { itemClickListener?.invoke(item) }
             }
+
         }
     }
 

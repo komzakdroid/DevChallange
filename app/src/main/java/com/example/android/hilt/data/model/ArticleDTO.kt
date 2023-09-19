@@ -1,15 +1,14 @@
 package com.example.android.hilt.data.model
 
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
-@Serializable
 data class ArticleDTO(
-    @SerialName("articles")
+    @SerializedName("articles")
     val articles: List<Article?>?,
-    @SerialName("status")
+    @SerializedName("status")
     val status: String?,
-    @SerialName("totalResults")
+    @SerializedName("totalResults")
     val totalResults: Int?
-)
+) : Serializable

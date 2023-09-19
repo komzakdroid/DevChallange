@@ -1,4 +1,4 @@
-package com.example.android.hilt.util
+package com.example.android.hilt.utils
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

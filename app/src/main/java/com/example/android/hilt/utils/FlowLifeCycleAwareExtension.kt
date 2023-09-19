@@ -1,4 +1,4 @@
-package com.example.android.hilt.util
+package com.example.android.hilt.utils
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner

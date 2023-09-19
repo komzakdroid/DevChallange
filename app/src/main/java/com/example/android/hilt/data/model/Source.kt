@@ -1,13 +1,13 @@
 package com.example.android.hilt.data.model
 
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
-@Serializable
+
 data class Source(
-    @SerialName("id")
+    @SerializedName("id")
     val id: String?,
-    @SerialName("name")
+    @SerializedName("name")
     val name: String?
-)
+) : Serializable

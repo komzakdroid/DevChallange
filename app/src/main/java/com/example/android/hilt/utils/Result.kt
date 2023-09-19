@@ -1,4 +1,4 @@
-package com.example.android.hilt.util
+package com.example.android.hilt.utils
 
 import com.example.android.hilt.data.model.ArticleDTO
 

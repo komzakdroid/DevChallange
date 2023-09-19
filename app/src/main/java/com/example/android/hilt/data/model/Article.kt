@@ -1,25 +1,25 @@
 package com.example.android.hilt.data.model
 
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
-@Serializable
+
 data class Article(
-    @SerialName("author")
+    @SerializedName("author")
     val author: String?,
-    @SerialName("content")
+    @SerializedName("content")
     val content: String?,
-    @SerialName("description")
+    @SerializedName("description")
     val description: String?,
-    @SerialName("publishedAt")
+    @SerializedName("publishedAt")
     val publishedAt: String?,
-    @SerialName("source")
+    @SerializedName("source")
     val source: Source?,
-    @SerialName("title")
+    @SerializedName("title")
     val title: String?,
-    @SerialName("url")
+    @SerializedName("url")
     val url: String?,
-    @SerialName("urlToImage")
+    @SerializedName("urlToImage")
     val urlToImage: String?
-)
+) : Serializable

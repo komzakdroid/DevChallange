@@ -2,8 +2,8 @@ package com.example.android.hilt.domain
 
 import com.example.android.hilt.data.model.ArticleDTO
 import com.example.android.hilt.data.repository.NewsRepository
-import com.example.android.hilt.util.DispatchersProvider
-import com.example.android.hilt.util.Result
+import com.example.android.hilt.utils.DispatchersProvider
+import com.example.android.hilt.utils.Result
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

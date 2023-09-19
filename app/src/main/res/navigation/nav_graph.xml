@@ -8,7 +8,7 @@
         android:id="@+id/homeFragment"
         android:name="com.example.android.hilt.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_articleFragment"
             app:destination="@id/articleFragment" />
@@ -17,11 +17,5 @@
         android:id="@+id/articleFragment"
         android:name="com.example.android.hilt.ui.article.ArticleFragment"
         android:label="fragment_article"
-        tools:layout="@layout/fragment_article" >
-        <argument
-            android:name="MyArticleArgs"
-            android:defaultValue="@null"
-            app:argType="string[]"
-            app:nullable="true" />
-    </fragment>
+        tools:layout="@layout/fragment_article"/>
 </navigation>
