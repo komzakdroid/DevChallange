@@ -7,19 +7,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.android.hilt.R
-import com.example.android.hilt.data.model.Article
+import com.example.android.hilt.data.dataSource.modul.News
 import com.example.android.hilt.databinding.ArticleItemLayoutBinding
 
 class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var list = emptyList<Article?>()
+    private var list = emptyList<News?>()
 
-    private var itemClickListener: ((Article) -> Unit)? = null
-    fun setOnItemClickListener(f: (Article) -> Unit) {
+    private var itemClickListener: ((News) -> Unit)? = null
+    fun setOnItemClickListener(f: (News) -> Unit) {
         itemClickListener = f
     }
 
-    fun submitList(data: List<Article?>?) {
+    fun submitList(data: List<News?>?) {
         list = data ?: emptyList()
         notifyDataSetChanged()
     }
@@ -27,7 +27,7 @@ class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private inner class NewsViewHolder(private val binding: ArticleItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
-        fun bind(item: Article) {
+        fun bind(item: News) {
             binding.apply {
 
                 if (item.urlToImage != null) {

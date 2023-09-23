@@ -2,8 +2,8 @@ package com.example.android.hilt.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.android.hilt.data.network.NewsResource
 import com.example.android.hilt.domain.GetNewsUseCase
-import com.example.android.hilt.utils.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -40,22 +40,25 @@ class HomeViewModel @Inject constructor(
     private fun getNews() {
         viewModelScope.launch {
 
-            _uiState.update { it.copy(loading = true, isEmpty = false) }
-
             when (val result = useCase.invoke("*")) {
-                is Result.Success -> {
+
+                is NewsResource.Loading -> {
+                    _uiState.update { it.copy(loading = true, isEmpty = false) }
+                }
+
+                is NewsResource.Success -> {
                     _uiState.update {
                         it.copy(
                             loading = false,
-                            data = (result.data?.articles?.filter { article ->
-                                article?.title != null && article.title != ""
+                            data = (result.data?.filter { article ->
+                                article.title != null && article.title != ""
                             }) ?: emptyList(),
-                            isEmpty = result.data?.articles?.isEmpty() ?: false,
+                            isEmpty = result.data?.isEmpty() ?: false,
                         )
                     }
                 }
 
-                is Result.Error -> {
+                is NewsResource.Error -> {
                     _uiState.update {
                         it.copy(
                             loading = false,
@@ -81,20 +84,23 @@ class HomeViewModel @Inject constructor(
             _uiState.update { it.copy(loading = true, isEmpty = false) }
 
             when (val result = useCase.invoke(search)) {
-                is Result.Success -> {
+                is NewsResource.Loading -> {
+                    _uiState.update { it.copy(loading = true, isEmpty = false) }
+                }
 
+                is NewsResource.Success -> {
                     _uiState.update {
                         it.copy(
                             loading = false,
-                            data = (result.data?.articles?.filter { article ->
-                                article?.title != null && article.title != ""
+                            data = (result.data?.filter { article ->
+                                article.title != null && article.title != ""
                             }) ?: emptyList(),
-                            isEmpty = result.data?.articles?.isEmpty() ?: false,
+                            isEmpty = result.data?.isEmpty() ?: false,
                         )
                     }
                 }
 
-                is Result.Error -> {
+                is NewsResource.Error -> {
                     _uiState.update {
                         it.copy(
                             loading = false,
